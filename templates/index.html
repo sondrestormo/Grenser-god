@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPX/KML Generator</title>
+</head>
+<body>
+    <h1>Lag GPX/KML for eiendomsgrense</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <h3>Søk med GNR/BNR</h3>
+        <input type="text" name="kommune" placeholder="Kommune"><br>
+        <input type="text" name="gnr" placeholder="Gårdsnummer"><br>
+        <input type="text" name="bnr" placeholder="Bruksnummer"><br><br>
+
+        <h3>ELLER skriv inn adresse</h3>
+        <input type="text" name="adresse" placeholder="Adresse"><br><br>
+
+        <h3>ELLER last opp CSV (kommune,gnr,bnr)</h3>
+        <input type="file" name="fil"><br><br>
+
+        <label>Velg filtype:</label>
+        <select name="filetype">
+            <option value="gpx">GPX</option>
+            <option value="kml">KML</option>
+        </select><br><br>
+
+        <button type="submit">Last ned</button>
+    </form>
+
+    {% if map_html %}
+    <h3>Eiendomsgrensekart:</h3>
+    <div style="height: 500px;">
+        {{ map_html|safe }}
+    </div>
+    {% endif %}
+</body>
+</html>
